@@ -18,7 +18,9 @@ header {
   color: white;
 }
 
-nav {
+.Nav {
+  display: flex;
+  justify-content: space-around;
   border: solid red;
   color: black;
 }
@@ -29,8 +31,12 @@ nav {
   align-items: center;
 }
 
+.Single-Article {
+  margin: 10px;
+}
+
 .Articles__Card {
-  margin: 5px;
+  margin: 10px;
   width: 75%;
   border: 1px solid red;
   background-color: rgb(255, 131, 131);
