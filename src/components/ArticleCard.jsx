@@ -8,7 +8,7 @@ const ArticleCard = ({article}) => {
             <p>{author}</p>
             <p>Topic: {topic}</p>
             <p>{formatDate(created_at)}</p>
-            <p>{title}</p>
+            <h2>{title}</h2>
             <p>Comment count: 0</p>
             <p>Votes: 0</p>
         </div>

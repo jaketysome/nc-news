@@ -31,7 +31,7 @@ nav {
 
 .Articles__Card {
   margin: 5px;
-  width: 350px;
+  width: 85%;
   border: 1px solid red;
   background-color: rgb(255, 131, 131);
   border-radius: 5%;
