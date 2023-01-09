@@ -11,3 +11,7 @@ export const getArticles = () => {
 export const getSingleArticleById = (articleId) => {
   return ncNewsAPI.get(`/articles/${articleId}`).then((res) => res.data);
 };
+
+export const getUserByUsername = (username) => {
+  return ncNewsAPI.get(`/users/${username}`).then((res) => res.data);
+};
