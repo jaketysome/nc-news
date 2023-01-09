@@ -23,8 +23,15 @@ nav {
   color: black;
 }
 
+.Articles {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .Articles__Card {
   margin: 5px;
+  width: 350px;
   border: 1px solid red;
   background-color: rgb(255, 131, 131);
   border-radius: 5%;

@@ -1,7 +1,7 @@
 import { formatDate } from "../utils/formatDate";
 
 const ArticleCard = ({article}) => {
-    const {title, topic, author, body, created_at, comment_count, votes} = article;
+    const {article_id, title, topic, author, body, created_at} = article;
 
     return (
         <div className="Articles__Card">
@@ -9,8 +9,8 @@ const ArticleCard = ({article}) => {
             <p>Topic: {topic}</p>
             <p>{formatDate(created_at)}</p>
             <p>{title}</p>
-            <p>Comment count: {comment_count}</p>
-            <p>Votes: {votes}</p>
+            <p>Comment count: 0</p>
+            <p>Votes: 0</p>
         </div>
     )
 }
