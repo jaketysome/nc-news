@@ -11,3 +11,22 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+header {
+  border: solid red;
+  background-color: red;
+  color: white;
+}
+
+nav {
+  border: solid red;
+  color: black;
+}
+
+.Articles__Card {
+  margin: 5px;
+  border: 1px solid red;
+  background-color: rgb(255, 131, 131);
+  border-radius: 5%;
+}
+
