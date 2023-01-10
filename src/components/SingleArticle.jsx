@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import { ClipLoader } from "react-spinners";
-import { BiCommentDetail, BiLike, BiHide } from "react-icons/bi";
+import { BiCommentDetail, BiLike, BiDislike, BiHide } from "react-icons/bi";
 import { formatDate } from "../utils/formatDate";
 import * as api from "../utils/api"
 import CommentsList from "./CommentsList";
@@ -20,6 +20,14 @@ const SingleArticle = () => {
         })
     }, [article_id])
 
+    const vote = (articleId, voteValue) => {
+        api.patchArticleByArticleId(articleId, voteValue).then((data) => {
+            const patchedArticle = data.article;
+            patchedArticle.comment_count = singleArticle.comment_count;
+            setSingleArticle(patchedArticle)
+        })
+    }
+
     if (isLoading) return <ClipLoader color="#36D7B7"/>
 
     if (singleArticle) {
@@ -30,9 +38,12 @@ const SingleArticle = () => {
                     <h2>{singleArticle.title}</h2>
                     <div className="Article__Banner">{singleArticle.author}<br></br>{formatDate(singleArticle.created_at)}</div>
                     <p className="Article__Body">{singleArticle.body}</p>
-                    <button onClick={(e) => setShowComments(true)}><BiCommentDetail/> {singleArticle.comment_count}</button>
-                    <span>     </span>
-                    <button><BiLike/> {singleArticle.votes}</button>
+                    <div className="Article__Interactions">
+                        <button onClick={(e) => setShowComments(true)}><BiCommentDetail/> {singleArticle.comment_count}</button>
+                        <button onClick={() => vote(article_id, 1)}><BiLike/></button>
+                        <span>{singleArticle.votes}</span>
+                        <button onClick={() => vote(article_id, -1)}><BiDislike/></button>
+                    </div>
                     <br></br>
                     {showComments && 
                     <Link to={`/articles/${article_id}`}>

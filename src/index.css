@@ -74,7 +74,7 @@ button {
   flex-direction: column;
   border-radius: 3px;
   align-items: center;
-  background-color: #36455c6f;
+  background-color: #15203000;
 }
 
 .Single__Article {
@@ -87,8 +87,8 @@ button {
 .Article__Content {
   margin-left: 15%;
   margin-right: 15%;
-  max-width: 70%;
-  padding: 30px;
+  max-width: 800px;
+  padding: 15px;
   border: 1px solid #152030;
   background-color: #EEF3F6;
   border-radius: 5px;
@@ -137,14 +137,18 @@ button {
   border-radius: 10px;
 }
 
+.Article__Interactions {
+  display: inline;
+}
+
 .Comment__Card {
   margin: 10px;
   width: 75%;
   height: 10%;
   max-width: 700px;
   padding: 10px;
-  border: 1px solid #EEF3F6;
-  background-color: #EEF3F6;
+  border: 1px solid #246da8;
+  background-color: #15203000;
   border-radius: 10px;
 }
 
