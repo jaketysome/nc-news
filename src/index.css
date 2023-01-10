@@ -5,6 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #152030;
 }
 
 code {
@@ -13,27 +14,82 @@ code {
 }
 
 header {
-  border: solid red;
-  background-color: red;
-  color: white;
+  padding: 0px 12% 0px 12%;
+  display: flex;
+  border: 1px solid #294160;
+  background-color: #152030;
+  color: #EEF3F6;
+  text-align: left;
+  font-variant: small-caps;
 }
 
-nav {
-  border: solid red;
-  color: black;
+h2 {
+  margin: 5 auto;
+  text-align: center;
+}
+
+p {
+  color: #246da8;
+}
+
+.Nav {
+  padding: 5px 5% 5px 5%;
+  display: flex;
+  justify-content: space-around;
+  background-color: #EEF3F6;
+  border-top: 1px solid #294160;
+  color: #EEF3F6;
 }
 
 .Articles {
   display: flex;
   flex-direction: column;
   align-items: center;
+  background-color: #152030;
+}
+
+.Single__Article {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #152030;
+}
+
+.Article__Content {
+  margin-left: 20%;
+  margin-right: 20%;
+  max-width: 75%;
+  padding: 30px;
+  border: 1px solid #152030;
+  background-color: #EEF3F6;
+  border-radius: 5px;
+  margin: 10px;
+}
+
+.Article__Body {
+  padding: 5px 2% 5px 2%;
+  margin: 5 auto;
+  text-align: justify;
 }
 
 .Articles__Card {
-  margin: 5px;
+  margin: 10px;
   width: 75%;
-  border: 1px solid red;
-  background-color: rgb(255, 131, 131);
-  border-radius: 5%;
+  height: 10%;
+  max-width: 700px;
+  border: 1px solid #EEF3F6;
+  background-color: #EEF3F6;
+  border-radius: 10px;
 }
 
+.User__Avatar {
+  margin: 10px;
+  width: 50px;
+  height: 50px;
+  border-radius: 5px;
+  background-color: white;
+}
+
+.white-text {
+  color: white;
+}

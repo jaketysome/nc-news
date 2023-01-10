@@ -3,7 +3,7 @@ import { ClipLoader } from "react-spinners";
 import ArticleCard from "./ArticleCard";
 import * as api from "../utils/api";
 
-const Home = () => {
+const ArticlesList = () => {
     const [articles, setArticles] = useState();
     const [isLoading, setIsLoading] = useState(false);
     
@@ -28,4 +28,4 @@ const Home = () => {
     )
 }
 
-export default Home;
+export default ArticlesList;
