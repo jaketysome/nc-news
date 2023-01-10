@@ -22,10 +22,11 @@ const ArticleCard = ({ article }) => {
     return (
         <div className="Articles__Card">
             <Link to={`/articles/${article_id}`} style={linkStyle}>
-                {user && <img className="User__Avatar" src={user.avatar_url} alt="User Avatar"></img>}
-                <p>{author}</p>
-                <p>Topic: {topic}</p>
-                <p>{formatDate(created_at)}</p>
+                <div className="Card__Banner" >
+                    {user && <img className="User__Avatar" src={user.avatar_url} alt="User Avatar"></img>}
+                    <div>{author}<br></br>{formatDate(created_at)}</div>
+                </div>
+                <p className="small-caps">{topic.toUpperCase()}</p>
                 <h2>{title}</h2>
                 <p><BiCommentDetail/> {comment_count}<span> | </span><BiLike/> {votes}</p>
             </Link>

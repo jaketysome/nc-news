@@ -26,10 +26,9 @@ const SingleArticle = () => {
         return (
             <div className="Single__Article">
                 <div className="Article__Content">
-                    <p>{singleArticle.topic}</p>
+                    <p className="small-caps">{singleArticle.topic.toUpperCase()}</p>
                     <h2>{singleArticle.title}</h2>
-                    <p>{singleArticle.author}</p>
-                    <p>{formatDate(singleArticle.created_at)}</p>
+                    <div className="Article__Banner">{singleArticle.author}<br></br>{formatDate(singleArticle.created_at)}</div>
                     <p className="Article__Body">{singleArticle.body}</p>
                     <button onClick={(e) => setShowComments(true)}><BiCommentDetail/> {singleArticle.comment_count}</button>
                     <span>     </span>
