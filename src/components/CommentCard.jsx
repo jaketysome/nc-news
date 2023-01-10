@@ -19,8 +19,8 @@ const CommentCard = ({comment}) => {
                 {user && <img className="User__Avatar" src={user.avatar_url} alt="User Avatar"></img>}
                 <div>{author}<br></br>{formatDate(created_at)}</div>
             </div>
-            <p><BiLike/> {votes}</p>
             <p className="Comment__Body">{body}</p>
+            <p><BiLike/> {votes}</p>
         </div>
     )
 }
