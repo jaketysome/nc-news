@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { ClipLoader } from "react-spinners";
 import { formatDate } from "../utils/formatDate";
 import * as api from "../utils/api"
 
-const SingleArticle = () => {
+const SingleArticle = ({showComments}) => {
     const [singleArticle, setSingleArticle] = useState();
     const [isLoading, setIsLoading] = useState(false);
     const { article_id } = useParams();
@@ -30,7 +30,14 @@ const SingleArticle = () => {
                     <p className="Article__Body">{singleArticle.body}</p>
                     <button>Votes: {singleArticle.votes}</button>
                     <span>     </span>
-                    <button>Comments: {singleArticle.comment_count}</button>
+                    <Link to={`/articles/${article_id}/comments`}>
+                        <button>Comments: {singleArticle.comment_count}</button>
+                    </Link>
+                    <br></br>
+                    {showComments && 
+                    <Link to={`/articles/${article_id}`}>
+                        <button>Hide Comments</button>
+                    </Link>}      
                 </div>
             </div>
         );

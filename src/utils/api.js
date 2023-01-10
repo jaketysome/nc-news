@@ -15,3 +15,7 @@ export const getSingleArticleById = (articleId) => {
 export const getUserByUsername = (username) => {
   return ncNewsAPI.get(`/users/${username}`).then((res) => res.data);
 };
+
+export const getCommentsByArticleId = (articleId) => {
+  return ncNewsAPI.get(`/articles/${articleId}/comments`).then((res) => res.data);
+}

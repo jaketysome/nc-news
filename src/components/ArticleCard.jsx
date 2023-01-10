@@ -11,7 +11,7 @@ const ArticleCard = ({ article }) => {
         api.getUserByUsername(author).then((data) => {
             setUser(data.user);
         })
-    }, [])
+    }, [author])
 
     const linkStyle = {
         margin: "1rem",
@@ -22,7 +22,7 @@ const ArticleCard = ({ article }) => {
     return (
         <div className="Articles__Card">
             <Link to={`/articles/${article_id}`} style={linkStyle}>
-                {user && <img className="User__Avatar" src={user.avatar_url} alt="Author Avatar URL"></img>}
+                {user && <img className="User__Avatar" src={user.avatar_url} alt="User Avatar"></img>}
                 <p>{author}</p>
                 <p>Topic: {topic}</p>
                 <p>{formatDate(created_at)}</p>
