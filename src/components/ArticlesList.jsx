@@ -6,7 +6,7 @@ import * as api from "../utils/api";
 const ArticlesList = () => {
     const [articles, setArticles] = useState();
     const [isLoading, setIsLoading] = useState(false);
-    
+
     useEffect(() => {
         setIsLoading(true);
         api.getArticles().then((data) => {

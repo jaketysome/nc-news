@@ -1,6 +1,7 @@
 import { formatDate } from "../utils/formatDate";
 import { Link } from "react-router-dom";
-import {useState, useEffect} from "react";
+import { BiCommentDetail, BiLike } from "react-icons/bi";
+import { useState, useEffect } from "react";
 import * as api from "../utils/api";
 
 const ArticleCard = ({ article }) => {
@@ -11,25 +12,23 @@ const ArticleCard = ({ article }) => {
         api.getUserByUsername(author).then((data) => {
             setUser(data.user);
         })
-    }, [])
+    }, [author])
 
     const linkStyle = {
         margin: "1rem",
         textDecoration: "none",
-        color: 'black'
     }
 
     return (
         <div className="Articles__Card">
             <Link to={`/articles/${article_id}`} style={linkStyle}>
-                {user && <img className="User__Avatar" src={user.avatar_url} alt="Author Avatar URL"></img>}
-                <p>{author}</p>
-                <p>Topic: {topic}</p>
-                <p>{formatDate(created_at)}</p>
+                <div className="Card__Banner" >
+                    {user && <img className="User__Avatar" src={user.avatar_url} alt="User Avatar"></img>}
+                    <div>{author}<br></br>{formatDate(created_at)}</div>
+                </div>
+                <p className="small-caps">{topic.toUpperCase()}</p>
                 <h2>{title}</h2>
-                <p>Comment count: {comment_count}</p>
-                <span></span>
-                <p>Votes: {votes}</p>
+                <p><BiCommentDetail/> {comment_count}<span> | </span><BiLike/> {votes}</p>
             </Link>
         </div>
     )
