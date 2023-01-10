@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { formatDate } from "../utils/formatDate";
+import { BiLike } from "react-icons/bi";
 import * as api from "../utils/api";
 
 const CommentCard = ({comment}) => {
@@ -17,7 +18,7 @@ const CommentCard = ({comment}) => {
             {user && <img className="User__Avatar" src={user.avatar_url} alt="User Avatar"></img>}
             <p>{author}</p>
             <p>{formatDate(created_at)}</p>
-            <p>Votes: {votes}</p>
+            <p><BiLike/> {votes}</p>
             <p className="Comment__Body">{body}</p>
         </div>
     )

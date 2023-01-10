@@ -1,6 +1,7 @@
 import { formatDate } from "../utils/formatDate";
 import { Link } from "react-router-dom";
-import {useState, useEffect} from "react";
+import { BiCommentDetail, BiLike } from "react-icons/bi";
+import { useState, useEffect } from "react";
 import * as api from "../utils/api";
 
 const ArticleCard = ({ article }) => {
@@ -27,9 +28,9 @@ const ArticleCard = ({ article }) => {
                 <p>Topic: {topic}</p>
                 <p>{formatDate(created_at)}</p>
                 <h2>{title}</h2>
-                <p>Comment count: {comment_count}</p>
+                <p><BiCommentDetail/> {comment_count}</p>
                 <span></span>
-                <p>Votes: {votes}</p>
+                <p><BiLike/> {votes}</p>
             </Link>
         </div>
     )

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import { ClipLoader } from "react-spinners";
+import { BiCommentDetail, BiLike, BiHide } from "react-icons/bi";
 import { formatDate } from "../utils/formatDate";
 import * as api from "../utils/api"
 
@@ -28,15 +29,15 @@ const SingleArticle = ({showComments}) => {
                     <p>{singleArticle.author}</p>
                     <p>{formatDate(singleArticle.created_at)}</p>
                     <p className="Article__Body">{singleArticle.body}</p>
-                    <button>Votes: {singleArticle.votes}</button>
+                    <button><BiLike/> {singleArticle.votes}</button>
                     <span>     </span>
                     <Link to={`/articles/${article_id}/comments`}>
-                        <button>Comments: {singleArticle.comment_count}</button>
+                        <button><BiCommentDetail/> {singleArticle.comment_count}</button>
                     </Link>
                     <br></br>
                     {showComments && 
                     <Link to={`/articles/${article_id}`}>
-                        <button>Hide Comments</button>
+                        <button><BiHide/> Hide Comments</button>
                     </Link>}      
                 </div>
             </div>
