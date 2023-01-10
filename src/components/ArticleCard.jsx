@@ -17,7 +17,6 @@ const ArticleCard = ({ article }) => {
     const linkStyle = {
         margin: "1rem",
         textDecoration: "none",
-        color: 'black'
     }
 
     return (
@@ -28,9 +27,7 @@ const ArticleCard = ({ article }) => {
                 <p>Topic: {topic}</p>
                 <p>{formatDate(created_at)}</p>
                 <h2>{title}</h2>
-                <p><BiCommentDetail/> {comment_count}</p>
-                <span></span>
-                <p><BiLike/> {votes}</p>
+                <p><BiCommentDetail/> {comment_count}<span> | </span><BiLike/> {votes}</p>
             </Link>
         </div>
     )

@@ -4,7 +4,6 @@ import Header from "./components/Header";
 import Nav from "./components/Nav";
 import ArticlesList from "./components/ArticlesList";
 import SingleArticle from "./components/SingleArticle";
-import CommentsList from "./components/CommentsList";
 
 function App() {
 
@@ -15,7 +14,6 @@ function App() {
       <Routes>
         <Route path="/" element={<ArticlesList />}></Route>
         <Route path="/articles/:article_id" element={<SingleArticle />}></Route>
-        <Route path="/articles/:article_id/comments" element={<CommentsList />}></Route>
       </Routes>
     </div>
   );

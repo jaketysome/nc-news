@@ -62,8 +62,9 @@ button {
 .Comments__List {
   display: flex;
   flex-direction: column;
+  border-radius: 3px;
   align-items: center;
-  background-color: #152030;
+  background-color: #2b3647;
 }
 
 .Single__Article {

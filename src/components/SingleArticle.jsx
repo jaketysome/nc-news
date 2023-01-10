@@ -4,13 +4,15 @@ import { ClipLoader } from "react-spinners";
 import { BiCommentDetail, BiLike, BiHide } from "react-icons/bi";
 import { formatDate } from "../utils/formatDate";
 import * as api from "../utils/api"
+import CommentsList from "./CommentsList";
 
-const SingleArticle = ({showComments}) => {
+const SingleArticle = () => {
     const [singleArticle, setSingleArticle] = useState();
+    const [showComments, setShowComments] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
     const { article_id } = useParams();
 
-    useEffect(() => {
+    useEffect((e) => {
         setIsLoading(true);
         api.getSingleArticleById(article_id).then((data) => {
             setSingleArticle(data.article);
@@ -29,16 +31,15 @@ const SingleArticle = ({showComments}) => {
                     <p>{singleArticle.author}</p>
                     <p>{formatDate(singleArticle.created_at)}</p>
                     <p className="Article__Body">{singleArticle.body}</p>
-                    <button><BiLike/> {singleArticle.votes}</button>
+                    <button onClick={(e) => setShowComments(true)}><BiCommentDetail/> {singleArticle.comment_count}</button>
                     <span>     </span>
-                    <Link to={`/articles/${article_id}/comments`}>
-                        <button><BiCommentDetail/> {singleArticle.comment_count}</button>
-                    </Link>
+                    <button><BiLike/> {singleArticle.votes}</button>
                     <br></br>
                     {showComments && 
                     <Link to={`/articles/${article_id}`}>
-                        <button><BiHide/> Hide Comments</button>
-                    </Link>}      
+                        <button onClick={(e) => setShowComments(false)}><BiHide/> Hide Comments</button>
+                    </Link>}
+                    {showComments && <CommentsList/>}
                 </div>
             </div>
         );
