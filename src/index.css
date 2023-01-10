@@ -5,6 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #152030;
 }
 
 code {
@@ -13,7 +14,7 @@ code {
 }
 
 header {
-  padding-left: 20px;
+  padding: 0px 20% 0px 20%;
   border: 1px solid #294160;
   background-color: #152030;
   color: #EEF3F6;
@@ -30,7 +31,7 @@ p {
 }
 
 .Nav {
-  padding: 0.5em;
+  padding: 5px 20% 5px 20%;
   display: flex;
   justify-content: space-around;
   background-color: #EEF3F6;
@@ -46,15 +47,18 @@ p {
 }
 
 .Single__Article {
+  margin-left: 20%;
+  margin-right: 20%;
   padding: 10px;
   border: 1px solid #152030;
+  background-color: #EEF3F6;
   border-radius: 5px;
   margin: 10px;
   
 }
 
 .Article__Body {
-  margin: 10px;
+  margin: 10px 30%;
   text-align: justify;
 }
 
