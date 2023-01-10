@@ -10,6 +10,7 @@ const SingleArticle = () => {
     const [singleArticle, setSingleArticle] = useState();
     const [showComments, setShowComments] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
+    const [voteError, setVoteError] = useState(false);
     const { article_id } = useParams();
 
     useEffect((e) => {
@@ -21,10 +22,15 @@ const SingleArticle = () => {
     }, [article_id])
 
     const vote = (articleId, voteValue) => {
-        api.patchArticleByArticleId(articleId, voteValue).then((data) => {
-            const patchedArticle = data.article;
-            patchedArticle.comment_count = singleArticle.comment_count;
-            setSingleArticle(patchedArticle)
+        setVoteError(false);
+        setSingleArticle((currSingleArticle) => {
+            return {...currSingleArticle, votes: currSingleArticle.votes += voteValue};
+        });
+        api.patchArticleByArticleId(articleId, voteValue).catch((err) => {
+        setVoteError(true);
+        setSingleArticle((currSingleArticle) => {
+            return {...currSingleArticle, votes: currSingleArticle.votes -= voteValue};
+        });
         })
     }
 
@@ -43,6 +49,7 @@ const SingleArticle = () => {
                         <button onClick={() => vote(article_id, 1)}><BiLike/></button>
                         <span>{singleArticle.votes}</span>
                         <button onClick={() => vote(article_id, -1)}><BiDislike/></button>
+                        {voteError && <p className="error-message">Oops! Something went wrong...</p>}
                     </div>
                     <br></br>
                     {showComments && 

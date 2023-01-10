@@ -130,8 +130,9 @@ button {
 .Articles__Card {
   margin: 10px;
   width: 75%;
-  height: 10%;
   max-width: 700px;
+  min-width: 350px;
+  height: 10%;
   border: 1px solid #EEF3F6;
   background-color: #EEF3F6;
   border-radius: 10px;
@@ -144,9 +145,10 @@ button {
 .Comment__Card {
   margin: 10px;
   width: 75%;
-  height: 10%;
   max-width: 700px;
-  padding: 10px;
+  min-width: 350px;
+  height: 10%;
+  padding: 5px;
   border: 1px solid #246da8;
   background-color: #15203000;
   border-radius: 10px;
@@ -169,4 +171,9 @@ button {
 
 .white-text {
   color: white;
+}
+
+.error-message {
+  color: red;
+  font-size: small;
 }
