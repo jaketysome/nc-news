@@ -21,12 +21,12 @@ const SingleArticle = () => {
 
     if (singleArticle) {
         return (
-            <div className="Single-Article">
+            <div className="Single__Article">
                 <p>{singleArticle.topic}</p>
                 <h2>{singleArticle.title}</h2>
                 <p>{singleArticle.author}</p>
                 <p>{formatDate(singleArticle.created_at)}</p>
-                <p>{singleArticle.body}</p>
+                <p className="Article__Body">{singleArticle.body}</p>
                 <button>Votes: {singleArticle.votes}</button>
                 <span>     </span>
                 <button>Comments: {singleArticle.comment_count}</button>
