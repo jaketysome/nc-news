@@ -13,7 +13,7 @@ function App() {
       <Nav />
       <Routes>
         <Route path="/" element={<ArticlesList />}></Route>
-        <Route path="/:article_id" element={<SingleArticle />}></Route>
+        <Route path="/articles/:article_id" element={<SingleArticle />}></Route>
       </Routes>
     </div>
   );

@@ -21,7 +21,7 @@ const ArticleCard = ({ article }) => {
 
     return (
         <div className="Articles__Card">
-            <Link to={`/${article_id}`} style={linkStyle}>
+            <Link to={`/articles/${article_id}`} style={linkStyle}>
                 {user && <img className="User__Avatar" src={user.avatar_url} alt="Author Avatar URL"></img>}
                 <p>{author}</p>
                 <p>Topic: {topic}</p>
