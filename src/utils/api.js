@@ -31,7 +31,7 @@ export const patchArticleByArticleId = (articleId, voteValue) => {
     .then((res) => res.data);
 };
 
-export const postComment = (articleId, username, comment) => {
+export const postCommentByArticleId = (articleId, username, comment) => {
   const postBody = {
     username: username,
     body: comment,

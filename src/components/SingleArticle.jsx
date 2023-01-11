@@ -58,7 +58,7 @@ const SingleArticle = () => {
                         <button onClick={(e) => setShowComments(false)}><BiHide/> Hide Comments</button>
                     </Link>}
                     <br></br>
-                    {showComments && <CommentInput />}
+                    {showComments && <CommentInput articleId={article_id} />}
                     {showComments && <CommentsList />}
                 </div>
             </div>
