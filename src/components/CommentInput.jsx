@@ -4,22 +4,22 @@ import { TiTick } from "react-icons/ti";
 import * as api from "../utils/api";
 
 const CommentInput = ({ articleId, user, setComments }) => {
-    const [newComment, setNewComment] = useState(null);
+    const [newComment, setNewComment] = useState("");
     const [postingComment, setPostingComment] = useState(false);
     const [commentPosted, setCommentPosted] = useState(false);
     const { username } = user;
 
     const handleSubmit = (e) => {
-        setPostingComment(true);
-        e.preventDefault();
-        api.postCommentByArticleId(articleId, username, newComment).then((data) => {
-            setPostingComment(false);
-            setCommentPosted(true);
-            setComments((currComments) => {
-                return [data.comment, ...currComments];
+            setPostingComment(true);
+            e.preventDefault();
+            api.postCommentByArticleId(articleId, username, newComment).then((data) => {
+                setPostingComment(false);
+                setCommentPosted(true);
+                setComments((currComments) => {
+                    return [data.comment, ...currComments];
+                })
+                setNewComment("");
             })
-            setNewComment(null);
-        })
     }
 
     if (postingComment) return <div><ClipLoader color="#36D7B7"/> Posting comment...</div>
