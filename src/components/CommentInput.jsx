@@ -3,10 +3,9 @@ import { ClipLoader } from "react-spinners";
 import { TiTick } from "react-icons/ti";
 import * as api from "../utils/api";
 
-const CommentInput = ({ articleId, user }) => {
+const CommentInput = ({ articleId, user, setComments, commentPosted, setCommentPosted }) => {
     const [newComment, setNewComment] = useState();
     const [postingComment, setPostingComment] = useState(false);
-    const [commentPosted, setCommentPosted] = useState(false);
     const { username } = user;
 
     const handleSubmit = (e) => {
@@ -15,6 +14,9 @@ const CommentInput = ({ articleId, user }) => {
         api.postCommentByArticleId(articleId, username, newComment).then((data) => {
             setPostingComment(false);
             setCommentPosted(true);
+            setComments((currComments) => {
+                return [data.comment, ...currComments];
+            })
         })
     }
 
@@ -30,7 +32,7 @@ const CommentInput = ({ articleId, user }) => {
             </textarea>
             <br></br>
             <button type="submit">Post Comment</button>
-            {commentPosted && <p>Comment successfully posted!! <TiTick/></p>}
+            {commentPosted && <p><TiTick/> Comment posted!! <TiTick/></p>}
         </form>
     )
 }
