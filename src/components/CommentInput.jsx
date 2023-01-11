@@ -2,7 +2,7 @@ import { useState } from "react";
 import { ClipLoader } from "react-spinners";
 import * as api from "../utils/api";
 
-const CommentInput = ({articleId, user}) => {
+const CommentInput = ({ articleId, user }) => {
     const [newComment, setNewComment] = useState();
     const [postingComment, setPostingComment] = useState(false);
     const { username } = user;
