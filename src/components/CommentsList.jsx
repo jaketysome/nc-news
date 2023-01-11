@@ -7,7 +7,6 @@ import CommentInput from "./CommentInput";
 
 const CommentsList = ({ user }) => {
     const [comments, setComments] = useState();
-    const [commentPosted, setCommentPosted] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
     const { article_id } = useParams();
 
@@ -17,13 +16,13 @@ const CommentsList = ({ user }) => {
             setComments(data.comments);
             setIsLoading(false);
         })
-    }, [article_id, commentPosted]);
+    }, [article_id]);
 
     if (isLoading) return <ClipLoader color="#36D7B7"/>
 
     return (
         <div className="Comments__List">
-            <CommentInput articleId={article_id} user={user} setComments={setComments} commentPosted={commentPosted} setCommentPosted={setCommentPosted}/>
+            <CommentInput articleId={article_id} user={user} setComments={setComments}/>
             {comments && comments.map((comment) => {
                 return (
                         <CommentCard key={comment.comment_id} comment={comment}/>

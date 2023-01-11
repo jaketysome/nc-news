@@ -3,9 +3,10 @@ import { ClipLoader } from "react-spinners";
 import { TiTick } from "react-icons/ti";
 import * as api from "../utils/api";
 
-const CommentInput = ({ articleId, user, setComments, commentPosted, setCommentPosted }) => {
-    const [newComment, setNewComment] = useState();
+const CommentInput = ({ articleId, user, setComments }) => {
+    const [newComment, setNewComment] = useState(null);
     const [postingComment, setPostingComment] = useState(false);
+    const [commentPosted, setCommentPosted] = useState(false);
     const { username } = user;
 
     const handleSubmit = (e) => {
@@ -17,6 +18,7 @@ const CommentInput = ({ articleId, user, setComments, commentPosted, setCommentP
             setComments((currComments) => {
                 return [data.comment, ...currComments];
             })
+            setNewComment(null);
         })
     }
 
