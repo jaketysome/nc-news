@@ -1,8 +1,9 @@
 import { useState } from "react";
 import { postComment } from "../utils/postComment";
 
-const CommentInput = ({articleId, username}) => {
+const CommentInput = ({articleId, user}) => {
     const [newComment, setNewComment] = useState();
+    const { username } = user;
 
     return (
         <form className="Comment__Form">

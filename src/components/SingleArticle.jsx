@@ -7,7 +7,7 @@ import * as api from "../utils/api"
 import CommentsList from "./CommentsList";
 import CommentInput from "./CommentInput";
 
-const SingleArticle = () => {
+const SingleArticle = ({ user }) => {
     const [singleArticle, setSingleArticle] = useState();
     const [showComments, setShowComments] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
@@ -58,7 +58,7 @@ const SingleArticle = () => {
                         <button onClick={(e) => setShowComments(false)}><BiHide/> Hide Comments</button>
                     </Link>}
                     <br></br>
-                    {showComments && <CommentInput articleId={article_id} />}
+                    {showComments && <CommentInput articleId={article_id} user={user}/>}
                     {showComments && <CommentsList />}
                 </div>
             </div>
