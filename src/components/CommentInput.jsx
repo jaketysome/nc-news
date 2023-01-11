@@ -1,16 +1,21 @@
 import { useState } from "react";
+import { ClipLoader } from "react-spinners";
 import * as api from "../utils/api";
 
 const CommentInput = ({articleId, user}) => {
     const [newComment, setNewComment] = useState();
+    const [postingComment, setPostingComment] = useState(false);
     const { username } = user;
 
     const handleSubmit = (e) => {
+        setPostingComment(true);
         e.preventDefault();
         api.postCommentByArticleId(articleId, username, newComment).then((data) => {
-            console.log(data.comment, "<<<< new comment")
+            setPostingComment(false);
         })
     }
+
+    if (postingComment) return <div><ClipLoader color="#36D7B7"/> Posting comment...</div>
 
     return (
         <form className="Comment__Form" onSubmit={handleSubmit}>
