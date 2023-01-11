@@ -49,7 +49,7 @@ const SingleArticle = () => {
                         <button onClick={() => vote(article_id, 1)}><BiLike/></button>
                         <span>{singleArticle.votes}</span>
                         <button onClick={() => vote(article_id, -1)}><BiDislike/></button>
-                        {voteError && <p className="error-message">Oops! Something went wrong...</p>}
+                        {voteError && <p className="error-message">Oops! Something went wrong with your vote! <br></br>Please try again...</p>}
                     </div>
                     <br></br>
                     {showComments && 
