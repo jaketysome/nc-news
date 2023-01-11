@@ -206,3 +206,18 @@ h1 {
   margin: 5 auto;
   text-align: justify;
 }
+
+.Comment__Form {
+  padding: 5px 10px 5px 10px;
+}
+
+.Comment__Input {
+  margin: 10px;
+  padding: 5px 10px 50px 10px;
+  width: 60%;
+  max-width: 700px;
+  min-width: 350px;
+  border: 1px solid #246da8;
+  background-color: #15203000;
+  border-radius: 10px; 
+}
