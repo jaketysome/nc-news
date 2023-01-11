@@ -171,6 +171,10 @@ h1 {
   border-radius: 10px;
 }
 
+.Articles__Card:hover {
+  box-shadow: 0px 0px 20px 0px #7dc0f7;
+}
+
 .Article__Interactions {
   display: inline;
 }
