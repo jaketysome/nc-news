@@ -1,13 +1,18 @@
 import { Link } from "react-router-dom";
 
+const linkStyle = {
+    textDecoration: "none",
+    fontSize: "small",
+}
+
 const Nav = () => {
     return (
         <nav className="Nav">
-            <Link to="/" >Home</Link>
-            <Link >Users</Link>
-            <Link >Coding</Link>
-            <Link >Football</Link>
-            <Link >Cooking</Link>
+            <Link to="/" style={linkStyle}>HOME</Link>
+            <Link style={linkStyle} >USERS</Link>
+            <Link style={linkStyle} >CODING</Link>
+            <Link style={linkStyle} >FOOTBALL</Link>
+            <Link style={linkStyle} >COOKING</Link>
         </nav>
     )
 } 

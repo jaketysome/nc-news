@@ -17,5 +17,16 @@ export const getUserByUsername = (username) => {
 };
 
 export const getCommentsByArticleId = (articleId) => {
-  return ncNewsAPI.get(`/articles/${articleId}/comments`).then((res) => res.data);
-}
+  return ncNewsAPI
+    .get(`/articles/${articleId}/comments`)
+    .then((res) => res.data);
+};
+
+export const patchArticleByArticleId = (articleId, voteValue) => {
+  const patchBody = {
+    inc_votes: voteValue,
+  };
+  return ncNewsAPI
+    .patch(`/articles/${articleId}`, patchBody)
+    .then((res) => res.data);
+};
