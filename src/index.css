@@ -60,6 +60,7 @@ button {
 }
 
 .error-message {
+  margin: 5px;
   color: red;
   font-size: small;
 }
