@@ -15,8 +15,7 @@ function App() {
       <Header />
       <Nav currTopic={currTopic} setCurrTopic={setCurrTopic}/>
       <Routes>
-        <Route path="/" element={<ArticlesList currTopic={currTopic} setCurrTopic={setCurrTopic}/>}></Route>
-        <Route path="/articles/:topic" element={<ArticlesList currTopic={currTopic} setCurrTopic={setCurrTopic}/>}></Route>
+        <Route path={currTopic !== null ? `/articles/${currTopic}` : "/"} element={<ArticlesList currTopic={currTopic} setCurrTopic={setCurrTopic}/>}></Route>
         <Route path="/articles/:article_id" element={<SingleArticle user={user} />}></Route>
       </Routes>
     </div>

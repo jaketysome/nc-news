@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 import TopicsList from "./TopicsList";
 import * as api from "../utils/api";
 
