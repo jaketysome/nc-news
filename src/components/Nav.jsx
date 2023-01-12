@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import TopicsList from "./TopicsList";
 import * as api from "../utils/api";
 
-const Nav = ({ currTopic, setCurrTopic, setSortBy }) => {
+const Nav = ({ currTopic, setCurrTopic, sortBy, setSortBy }) => {
     const [topicsList, setTopicsList] = useState();
     const [revealTopics, setRevealTopics] = useState(false);
 
@@ -24,10 +24,14 @@ const Nav = ({ currTopic, setCurrTopic, setSortBy }) => {
             <Link className="Nav__link" >USERS</Link>
             <div className="Sort-by">
                 <label htmlFor="sort-by">Sort by: </label> 
-                <select id="sort-by">
-                    <option onClick={() => {setSortBy("created_at")}}>Date</option>
-                    <option onClick={() => {setSortBy("comment_count")}}>Comment Count</option>
-                    <option onClick={() => {setSortBy("votes")}}>Votes</option>
+                <select 
+                    id="sort-by"
+                    value={sortBy}
+                    onChange={(e) => {setSortBy(e.target.value)}}
+                    >
+                    <option value="created_at">Date</option>
+                    <option value="comment_count">Comment Count</option>
+                    <option value="votes">Votes</option>
                 </select>
             </div>
         </nav>

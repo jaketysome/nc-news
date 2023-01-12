@@ -14,7 +14,7 @@ const ArticlesList = ({ currTopic, sortBy }) => {
             setArticles(data.articles);
             setIsLoading(false)
         })
-    }, [currTopic]);
+    }, [currTopic, sortBy]);
 
     if (isLoading) return <ClipLoader className="Loading-spinner"color="#36D7B7"/>
 
