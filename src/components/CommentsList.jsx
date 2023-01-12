@@ -5,7 +5,7 @@ import * as api from "../utils/api";
 import CommentCard from "./CommentCard";
 import CommentInput from "./CommentInput";
 
-const CommentsList = ({ user }) => {
+const CommentsList = ({ currUser }) => {
     const [comments, setComments] = useState();
     const [isLoading, setIsLoading] = useState(false);
     const { article_id } = useParams();
@@ -22,7 +22,7 @@ const CommentsList = ({ user }) => {
 
     return (
         <div className="Comments__List">
-            <CommentInput articleId={article_id} user={user} setComments={setComments}/>
+            <CommentInput articleId={article_id} currUser={currUser} setComments={setComments}/>
             {comments && comments.map((comment) => {
                 return (
                         <CommentCard key={comment.comment_id} comment={comment}/>

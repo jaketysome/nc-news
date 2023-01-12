@@ -1,12 +1,12 @@
 import {GiWireframeGlobe} from "react-icons/gi";
 
-const Header = ({ user }) => {
+const Header = ({ currUser }) => {
     return (
         <header>
             <h1><GiWireframeGlobe className="Logo__Icon" /> NC News</h1>
             <div className="User__info">
-                <img className="User__Avatar" src={user.avatar_url}></img>
-                <p>{user.username}</p>
+                <img className="User__Avatar" src={currUser.avatar_url}></img>
+                <p>{currUser.username}</p>
             </div>
         </header>
     )
