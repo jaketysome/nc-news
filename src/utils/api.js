@@ -43,5 +43,5 @@ export const postCommentByArticleId = (articleId, username, comment) => {
 };
 
 export const getTopics = () => {
-  return ncNewsAPI.get("/topics").then((res) => res.date);
+  return ncNewsAPI.get("/topics").then((res) => res.data);
 }
