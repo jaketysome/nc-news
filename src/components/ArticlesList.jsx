@@ -6,7 +6,7 @@ import * as api from "../utils/api";
 
 const ArticlesList = ({ currTopic }) => {
     const [articles, setArticles] = useState();
-    const [isLoading, setIsLoading] = useState(false);
+    const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
         setIsLoading(true);
@@ -16,7 +16,7 @@ const ArticlesList = ({ currTopic }) => {
         })
     }, [currTopic]);
 
-    if (isLoading) return <ClipLoader color="#36D7B7"/>
+    if (isLoading) return <ClipLoader className="Loading-spinner"color="#36D7B7"/>
 
     return (
         <div className="Articles">
