@@ -30,3 +30,7 @@ export const patchArticleByArticleId = (articleId, voteValue) => {
     .patch(`/articles/${articleId}`, patchBody)
     .then((res) => res.data);
 };
+
+export const getTopics = () => {
+  return ncNewsAPI.get("/topics").then((res) => res.date);
+}
