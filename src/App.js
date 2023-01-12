@@ -9,13 +9,15 @@ import SingleArticle from "./components/SingleArticle";
 function App() {
   const [user, setUser] = useState({username: "grumpy19", name: "Paul Grump", avatar_url: "https://vignette.wikia.nocookie.net/mrmen/images/7/78/Mr-Grumpy-3A.PNG/revision/latest?cb=20170707233013"});
   const [currTopic, setCurrTopic] = useState(null);
+  const [sortBy, setSortBy] = useState("created_at");
+  const [order, setOrder] = useState("desc");
 
   return (
     <div className="App">
       <Header />
-      <Nav currTopic={currTopic} setCurrTopic={setCurrTopic}/>
+      <Nav currTopic={currTopic} setCurrTopic={setCurrTopic} sortBy={sortBy} setSortBy={setSortBy} order={order} setOrder={setOrder}/>
       <Routes>
-        <Route path={currTopic !== null ? `/articles/${currTopic}` : "/"} element={<ArticlesList currTopic={currTopic} setCurrTopic={setCurrTopic}/>}></Route>
+        <Route path={currTopic !== null ? `/articles/${currTopic}` : "/"} element={<ArticlesList currTopic={currTopic} setCurrTopic={setCurrTopic} sortBy={sortBy} order={order}/>}></Route>
         <Route path="/articles/:article_id" element={<SingleArticle user={user} />}></Route>
       </Routes>
     </div>
