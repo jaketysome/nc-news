@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import TopicsList from "./TopicsList";
 import * as api from "../utils/api";
 
-const Nav = ({ currTopic, setCurrTopic, sortBy, setSortBy }) => {
+const Nav = ({ currTopic, setCurrTopic, sortBy, setSortBy, order, setOrder }) => {
     const [topicsList, setTopicsList] = useState();
     const [revealTopics, setRevealTopics] = useState(false);
 
@@ -26,12 +26,18 @@ const Nav = ({ currTopic, setCurrTopic, sortBy, setSortBy }) => {
                 <label htmlFor="sort-by">Sort by: </label> 
                 <select 
                     id="sort-by"
-                    value={sortBy}
-                    onChange={(e) => {setSortBy(e.target.value)}}
+                    value={`${sortBy}/${order}`}
+                    onChange={(e) => {
+                        setSortBy(e.target.value.split("/")[0])
+                        setOrder(e.target.value.split("/")[1])
+                    }}
                     >
-                    <option value="created_at">Date</option>
-                    <option value="comment_count">Comment Count</option>
-                    <option value="votes">Votes</option>
+                    <option value="created_at/desc">Date (newest first)</option>
+                    <option value="created_at/asc">Date (oldest first)</option>
+                    <option value="comment_count/desc">Comment Count (highest first)</option>
+                    <option value="comment_count/asc">Comment Count (lowest first)</option>
+                    <option value="votes/desc">Votes (highest first)</option>
+                    <option value="votes/asc">Votes (lowest first)</option>
                 </select>
             </div>
         </nav>
