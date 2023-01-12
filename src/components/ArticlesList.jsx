@@ -13,7 +13,7 @@ const ArticlesList = ({ currTopic }) => {
             setArticles(data.articles);
             setIsLoading(false)
         })
-    }, []);
+    }, [currTopic]);
 
     if (isLoading) return <ClipLoader color="#36D7B7"/>
 

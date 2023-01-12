@@ -6,7 +6,7 @@ const TopicsList = ({ topicsList, currTopic, setCurrTopic }) => {
         <nav className="Topics__nav">
             {topicsList?.map((topic) => {
                 return (
-                    <Link className={currTopic === topic.slug ? "Nav__link__selected" : "Nav__link"} key={topic.slug} onClick={() => {setCurrTopic(topic.slug)}}>{topic.slug.toUpperCase()}</Link>
+                    <Link to={`/?topic=${topic.slug}`} className={currTopic === topic.slug ? "Nav__link__selected" : "Nav__link"} key={topic.slug} onClick={() => {setCurrTopic(topic.slug)}}>{topic.slug.toUpperCase()}</Link>
                 )
             })}
         </nav>
