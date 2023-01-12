@@ -3,13 +3,13 @@ import { ClipLoader } from "react-spinners";
 import ArticleCard from "./ArticleCard";
 import * as api from "../utils/api";
 
-const ArticlesList = () => {
+const ArticlesList = ({ currTopic }) => {
     const [articles, setArticles] = useState();
     const [isLoading, setIsLoading] = useState(false);
 
     useEffect(() => {
         setIsLoading(true);
-        api.getArticles().then((data) => {
+        api.getArticles(currTopic).then((data) => {
             setArticles(data.articles);
             setIsLoading(false)
         })

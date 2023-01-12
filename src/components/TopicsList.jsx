@@ -1,12 +1,12 @@
 import { Link } from "react-router-dom";
 
-const TopicsList = ({ topics }) => {
+const TopicsList = ({ topicsList, currTopic, setCurrTopic }) => {
 
     return (
         <nav className="Topics__nav">
-            {topics?.map((topic) => {
+            {topicsList?.map((topic) => {
                 return (
-                    <Link className="Nav__link" key={topic.slug}>{topic.slug.toUpperCase()}</Link>
+                    <Link className={currTopic === topic.slug ? "Nav__link__selected" : "Nav__link"} key={topic.slug} onClick={() => {setCurrTopic(topic.slug)}}>{topic.slug.toUpperCase()}</Link>
                 )
             })}
         </nav>

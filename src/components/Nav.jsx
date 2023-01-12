@@ -3,15 +3,15 @@ import { Link, useLocation } from "react-router-dom";
 import TopicsList from "./TopicsList";
 import * as api from "../utils/api";
 
-const Nav = () => {
-    const [topics, setTopics] = useState();
+const Nav = ({ currTopic, setCurrTopic }) => {
+    const [topicsList, setTopicsList] = useState();
     const [revealTopics, setRevealTopics] = useState(false);
 
     const currURL = useLocation().pathname;
 
     useEffect(() => {
         api.getTopics().then((data) => {
-            setTopics(data.topics)
+            setTopicsList(data.topics)
         })
     }, []);
 
@@ -22,7 +22,7 @@ const Nav = () => {
             <Link className={revealTopics ? "Nav__link__selected" : "Nav__link"} onClick={() => {revealTopics ? setRevealTopics(false) : setRevealTopics(true)}}>TOPICS</Link>
             <Link className="Nav__link" >USERS</Link>
         </nav>
-        {revealTopics && <TopicsList topics={topics}/>}
+        {revealTopics && <TopicsList topicsList={topicsList} currTopic={currTopic} setCurrTopic={setCurrTopic}/>}
         </div>
     )
 } 
