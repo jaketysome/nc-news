@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { ClipLoader } from "react-spinners";
 import ArticleCard from "./ArticleCard";
+import TopicHeader from "./TopicHeader";
 import * as api from "../utils/api";
 
 const ArticlesList = ({ currTopic }) => {
@@ -19,6 +20,7 @@ const ArticlesList = ({ currTopic }) => {
 
     return (
         <div className="Articles">
+            {currTopic !== null && <TopicHeader currTopic={currTopic}/>}
             {articles && articles.map((article) => {
                 return (
                     <ArticleCard article={article} key={article.article_id}/>
