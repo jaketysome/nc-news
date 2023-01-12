@@ -64,6 +64,10 @@ button {
   font-size: small;
 }
 
+.Loading-spinner {
+  margin-top: 25px;
+}
+
 /* --------------------------------------------------------Header---------------------------------------------------------------- */
 
 header {
@@ -86,13 +90,50 @@ h1 {
 /* --------------------------------------------------------Nav---------------------------------------------------------------- */
 
 .Nav {
-  width: auto;
-  padding: 5px 9% 5px 9%;
   display: flex;
-  justify-content: space-around;
+  box-sizing: border-box;
+  width: auto;
+  padding: 10px 10px 10px 16%;
+  border-top: 1px solid #152030;
   background-color: #EEF3F6;
-  border-top: 1px solid #294160;
+  text-align: left;
+  word-spacing: 20px;
+}
+
+.Nav__link {
+  margin-right: 5%;
+  text-decoration: none;
+  font-size: small;
+}
+
+.Nav__link__selected {
+  margin-right: 5%;
+  font-size: small;
+}
+
+/* --------------------------------------------------------Topics---------------------------------------------------------------- */
+
+.Topics__nav {
+  display: flex;
+  box-sizing: border-box;
+  width: auto;
+  padding: 10px 10px 10px 16%;
+  border-top: 1px solid #152030;
+  background-color: #EEF3F6;
+  text-align: left;
+  word-spacing: 20px;
+}
+
+.Topic__header {
+  width: 100%;
+  margin: 0px;
+  padding: 0px;
   color: #EEF3F6;
+  background-color: #152030d0;
+  border-bottom: 1px solid #EEF3F6;
+  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-variant: small-caps;
+  font-size: x-large;
 }
 
 /* --------------------------------------------------------Cards---------------------------------------------------------------- */

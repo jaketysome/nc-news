@@ -8,13 +8,15 @@ import SingleArticle from "./components/SingleArticle";
 
 function App() {
   const [user, setUser] = useState({username: "grumpy19", name: "Paul Grump", avatar_url: "https://vignette.wikia.nocookie.net/mrmen/images/7/78/Mr-Grumpy-3A.PNG/revision/latest?cb=20170707233013"});
+  const [currTopic, setCurrTopic] = useState(null);
 
   return (
     <div className="App">
       <Header />
-      <Nav />
+      <Nav currTopic={currTopic} setCurrTopic={setCurrTopic}/>
       <Routes>
-        <Route path="/" element={<ArticlesList />}></Route>
+        <Route path="/" element={<ArticlesList currTopic={currTopic} setCurrTopic={setCurrTopic}/>}></Route>
+        <Route path="/articles/:topic" element={<ArticlesList currTopic={currTopic} setCurrTopic={setCurrTopic}/>}></Route>
         <Route path="/articles/:article_id" element={<SingleArticle user={user} />}></Route>
       </Routes>
     </div>

@@ -1,19 +1,30 @@
-import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { Link, useLocation } from "react-router-dom";
+import TopicsList from "./TopicsList";
+import * as api from "../utils/api";
 
-const linkStyle = {
-    textDecoration: "none",
-    fontSize: "small",
-}
+const Nav = ({ currTopic, setCurrTopic }) => {
+    const [topicsList, setTopicsList] = useState();
+    const [revealTopics, setRevealTopics] = useState(false);
 
-const Nav = () => {
+    useEffect(() => {
+        api.getTopics().then((data) => {
+            setTopicsList(data.topics)
+        })
+    }, []);
+
     return (
+        <div>
         <nav className="Nav">
-            <Link to="/" style={linkStyle}>HOME</Link>
-            <Link style={linkStyle} >USERS</Link>
-            <Link style={linkStyle} >CODING</Link>
-            <Link style={linkStyle} >FOOTBALL</Link>
-            <Link style={linkStyle} >COOKING</Link>
+            <Link to="/" className={currTopic === null ? "Nav__link__selected" : "Nav__link"} onClick={() => {
+                setCurrTopic(null) 
+                setRevealTopics(false)
+                }}>HOME</Link>
+            <Link className={revealTopics ? "Nav__link__selected" : "Nav__link"} onClick={() => {revealTopics ? setRevealTopics(false) : setRevealTopics(true)}}>TOPICS</Link>
+            <Link className="Nav__link" >USERS</Link>
         </nav>
+        {revealTopics && <TopicsList topicsList={topicsList} currTopic={currTopic} setCurrTopic={setCurrTopic}/>}
+        </div>
     )
 } 
 
