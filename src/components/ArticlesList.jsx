@@ -4,17 +4,17 @@ import ArticleCard from "./ArticleCard";
 import TopicHeader from "./TopicHeader";
 import * as api from "../utils/api";
 
-const ArticlesList = ({ currTopic, sortBy }) => {
+const ArticlesList = ({ currTopic, sortBy, order }) => {
     const [articles, setArticles] = useState();
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
         setIsLoading(true);
-        api.getArticles(currTopic, sortBy).then((data) => {
+        api.getArticles(currTopic, sortBy, order).then((data) => {
             setArticles(data.articles);
             setIsLoading(false)
         })
-    }, [currTopic, sortBy]);
+    }, [currTopic, sortBy, order]);
 
     if (isLoading) return <ClipLoader className="Loading-spinner"color="#36D7B7"/>
 
