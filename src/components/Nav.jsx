@@ -22,6 +22,14 @@ const Nav = ({ currTopic, setCurrTopic }) => {
                 }}>HOME</Link>
             <Link className={revealTopics ? "Nav__link__selected" : "Nav__link"} onClick={() => {revealTopics ? setRevealTopics(false) : setRevealTopics(true)}}>TOPICS</Link>
             <Link className="Nav__link" >USERS</Link>
+            <div className="Sort-by">
+                <label htmlFor="sort-by">Sort by: </label> 
+                <select id="sort-by">
+                    <option>Date</option>
+                    <option>Comment Count</option>
+                    <option>Votes</option>
+                </select>
+            </div>
         </nav>
         {revealTopics && <TopicsList topicsList={topicsList} currTopic={currTopic} setCurrTopic={setCurrTopic}/>}
         </div>

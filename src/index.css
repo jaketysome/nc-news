@@ -32,6 +32,10 @@ button {
   margin: 5px;
 }
 
+select {
+  width: auto;
+}
+
 .small-caps {
   color: #246da8;
   text-transform: capitalize;
@@ -98,6 +102,14 @@ h1 {
   background-color: #EEF3F6;
   text-align: left;
   word-spacing: 20px;
+}
+
+.Sort-by {
+  margin-left: auto;
+  margin-right: 19%;
+  word-spacing: 0px;
+  font-size: small;
+  color:#114774;
 }
 
 .Nav__link {
