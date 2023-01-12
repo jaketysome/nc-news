@@ -86,18 +86,33 @@ h1 {
 /* --------------------------------------------------------Nav---------------------------------------------------------------- */
 
 .Nav {
-  width: auto;
-  padding: 5px 9% 5px 9%;
   display: flex;
-  justify-content: space-around;
+  box-sizing: border-box;
+  width: auto;
+  padding: 10px 10px 10px 16%;
+  border-top: 1px solid #152030;
   background-color: #EEF3F6;
-  border-top: 1px solid #294160;
-  color: #EEF3F6;
+  text-align: left;
+  word-spacing: 20px;
 }
 
 .Nav__link {
-  text-decoration: "none";
-  font-size: "small";
+  margin-right: 5%;
+  text-decoration: none;
+  font-size: small;
+}
+
+/* --------------------------------------------------------TopicsList---------------------------------------------------------------- */
+
+.Topics__nav {
+  display: flex;
+  box-sizing: border-box;
+  width: auto;
+  padding: 10px 10px 10px 16%;
+  border-top: 1px solid #152030;
+  background-color: #EEF3F6;
+  text-align: left;
+  word-spacing: 20px;
 }
 
 /* --------------------------------------------------------Cards---------------------------------------------------------------- */
