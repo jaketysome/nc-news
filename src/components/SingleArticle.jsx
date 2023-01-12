@@ -5,8 +5,9 @@ import { BiCommentDetail, BiLike, BiDislike, BiHide } from "react-icons/bi";
 import { formatDate } from "../utils/formatDate";
 import * as api from "../utils/api"
 import CommentsList from "./CommentsList";
+import CommentInput from "./CommentInput";
 
-const SingleArticle = () => {
+const SingleArticle = ({ user }) => {
     const [singleArticle, setSingleArticle] = useState();
     const [showComments, setShowComments] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
@@ -56,7 +57,8 @@ const SingleArticle = () => {
                     <Link to={`/articles/${article_id}`}>
                         <button onClick={(e) => setShowComments(false)}><BiHide/> Hide Comments</button>
                     </Link>}
-                    {showComments && <CommentsList/>}
+                    <br></br>
+                    {showComments && <CommentsList articleId={article_id} user={user}/>}
                 </div>
             </div>
         );

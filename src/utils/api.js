@@ -30,3 +30,14 @@ export const patchArticleByArticleId = (articleId, voteValue) => {
     .patch(`/articles/${articleId}`, patchBody)
     .then((res) => res.data);
 };
+
+export const postCommentByArticleId = (articleId, username, comment) => {
+  const postBody = {
+    username: username,
+    body: comment,
+  };
+
+  return ncNewsAPI
+    .post(`/articles/${articleId}/comments`, postBody)
+    .then((res) => res.data);
+};

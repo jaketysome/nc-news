@@ -3,8 +3,9 @@ import { useParams } from "react-router-dom";
 import { ClipLoader } from "react-spinners";
 import * as api from "../utils/api";
 import CommentCard from "./CommentCard";
+import CommentInput from "./CommentInput";
 
-const CommentsList = () => {
+const CommentsList = ({ user }) => {
     const [comments, setComments] = useState();
     const [isLoading, setIsLoading] = useState(false);
     const { article_id } = useParams();
@@ -21,6 +22,7 @@ const CommentsList = () => {
 
     return (
         <div className="Comments__List">
+            <CommentInput articleId={article_id} user={user} setComments={setComments}/>
             {comments && comments.map((comment) => {
                 return (
                         <CommentCard key={comment.comment_id} comment={comment}/>
