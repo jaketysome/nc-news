@@ -4,13 +4,13 @@ import ArticleCard from "./ArticleCard";
 import TopicHeader from "./TopicHeader";
 import * as api from "../utils/api";
 
-const ArticlesList = ({ currTopic }) => {
+const ArticlesList = ({ currTopic, sortBy }) => {
     const [articles, setArticles] = useState();
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
         setIsLoading(true);
-        api.getArticles(currTopic).then((data) => {
+        api.getArticles(currTopic, sortBy).then((data) => {
             setArticles(data.articles);
             setIsLoading(false)
         })
