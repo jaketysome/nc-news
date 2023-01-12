@@ -5,6 +5,7 @@ import * as api from "../utils/api";
 
 const Nav = () => {
     const [topics, setTopics] = useState();
+    const [revealTopics, setRevealTopics] = useState(false);
 
     useEffect(() => {
         api.getTopics().then((data) => {
@@ -16,10 +17,10 @@ const Nav = () => {
         <div>
         <nav className="Nav">
             <Link to="/" className="Nav__link" >HOME</Link>
-            <Link className="Nav__link" >TOPICS</Link>
+            <Link className="Nav__link" onClick={() => {revealTopics ? setRevealTopics(false) : setRevealTopics(true)}}>TOPICS</Link>
             <Link className="Nav__link" >USERS</Link>
         </nav>
-        <TopicsList topics={topics}/>
+        {revealTopics && <TopicsList topics={topics}/>}
         </div>
     )
 } 
