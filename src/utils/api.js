@@ -31,6 +31,17 @@ export const patchArticleByArticleId = (articleId, voteValue) => {
     .then((res) => res.data);
 };
 
+export const postCommentByArticleId = (articleId, username, comment) => {
+  const postBody = {
+    username: username,
+    body: comment,
+  };
+  
+  return ncNewsAPI
+  .post(`/articles/${articleId}/comments`, postBody)
+  .then((res) => res.data);
+};
+
 export const getTopics = () => {
   return ncNewsAPI.get("/topics").then((res) => res.date);
 }

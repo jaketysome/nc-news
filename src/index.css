@@ -59,6 +59,7 @@ button {
 }
 
 .error-message {
+  margin: 5px;
   color: red;
   font-size: small;
 }
@@ -209,4 +210,17 @@ h1 {
   padding: 5px 2% 5px 2%;
   margin: 5 auto;
   text-align: justify;
+}
+
+.Comment__Form {
+  padding: 5px 10px 5px 10px;
+}
+
+.Comment__Input {
+  margin: 10px;
+  padding: 10px 10px 10% 10px;
+  min-width: 340px;
+  border: 1px solid #246da8;
+  background-color: #15203000;
+  border-radius: 10px; 
 }
