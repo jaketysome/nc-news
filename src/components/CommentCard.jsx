@@ -21,7 +21,7 @@ const CommentCard = ({ comment, currUser }) => {
             </div>
             <p className="Comment__Body">{body}</p>
             <p><BiLike/> {votes}</p>
-            {commentAuthor.author === currUser.username ? <button>Delete comment</button> : null}
+            {commentAuthor?.username === currUser.username ? <button>Delete comment</button> : null}
         </div>
     )
 }

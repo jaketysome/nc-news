@@ -25,7 +25,7 @@ const CommentsList = ({ currUser }) => {
             <CommentInput articleId={article_id} currUser={currUser} setComments={setComments}/>
             {comments && comments.map((comment) => {
                 return (
-                        <CommentCard key={comment.comment_id} comment={comment}/>
+                        <CommentCard key={comment.comment_id} comment={comment} currUser={currUser}/>
                 )
             })}
         </div>
