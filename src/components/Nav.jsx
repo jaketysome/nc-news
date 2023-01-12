@@ -7,8 +7,6 @@ const Nav = ({ currTopic, setCurrTopic }) => {
     const [topicsList, setTopicsList] = useState();
     const [revealTopics, setRevealTopics] = useState(false);
 
-    const currURL = useLocation().pathname;
-
     useEffect(() => {
         api.getTopics().then((data) => {
             setTopicsList(data.topics)
@@ -18,7 +16,10 @@ const Nav = ({ currTopic, setCurrTopic }) => {
     return (
         <div>
         <nav className="Nav">
-            <Link to="/" className={currURL === "/" ? "Nav__link__selected" : "Nav__link"} >HOME</Link>
+            <Link to="/" className={currTopic === null ? "Nav__link__selected" : "Nav__link"} onClick={() => {
+                setCurrTopic(null) 
+                setRevealTopics(false)
+                }}>HOME</Link>
             <Link className={revealTopics ? "Nav__link__selected" : "Nav__link"} onClick={() => {revealTopics ? setRevealTopics(false) : setRevealTopics(true)}}>TOPICS</Link>
             <Link className="Nav__link" >USERS</Link>
         </nav>
