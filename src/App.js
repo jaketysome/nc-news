@@ -14,7 +14,7 @@ function App() {
 
   return (
     <div className="App">
-      <Header />
+      <Header user={user}/>
       <Nav currTopic={currTopic} setCurrTopic={setCurrTopic} sortBy={sortBy} setSortBy={setSortBy} order={order} setOrder={setOrder}/>
       <Routes>
         <Route path={currTopic !== null ? `/articles/${currTopic}` : "/"} element={<ArticlesList currTopic={currTopic} setCurrTopic={setCurrTopic} sortBy={sortBy} order={order}/>}></Route>
