@@ -4,7 +4,7 @@ import { TiTick } from "react-icons/ti";
 import { RxCrossCircled } from "react-icons/rx";
 import * as api from "../utils/api";
 
-const CommentInput = ({ articleId, currUser, setComments }) => {
+const CommentInput = ({ articleId, currUser, setComments, setCommentDeleted }) => {
     const [newComment, setNewComment] = useState("");
     const [validComment, setValidComment] = useState(false);
     const [showErrorMessage, setShowErrorMessage] = useState(false);
@@ -49,7 +49,8 @@ const CommentInput = ({ articleId, currUser, setComments }) => {
             <textarea className="Comment__Input" id="comment-input" placeholder="Enter comment..." value={newComment} 
                 onBlur={(e) => {isValidComment(e.target.value)}} 
                 onChange={(e) => {
-                isValidComment(e.target.value);   
+                isValidComment(e.target.value);  
+                setCommentDeleted(false); 
                 setCommentPosted(false);
                 setNewComment(e.target.value);
                 }}>
