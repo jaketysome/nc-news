@@ -19,12 +19,12 @@ const SingleArticle = ({ setIsHome, currUser, loggedIn, error, setError }) => {
         api.getSingleArticleById(article_id).then((data) => {
             setSingleArticle(data.article);
             setIsLoading(false);
+            setError(null);
         }).catch((err) => {
-            console.log(err)
             setIsLoading(false);
             setError(err.response);
         })
-    }, [article_id])
+    }, [setError, article_id])
 
     const vote = (articleId, voteValue) => {
         setVoteError(false);
