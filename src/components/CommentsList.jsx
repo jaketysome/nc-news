@@ -1,13 +1,16 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { ClipLoader } from "react-spinners";
+import { TiTick } from "react-icons/ti";
 import * as api from "../utils/api";
 import CommentCard from "./CommentCard";
 import CommentInput from "./CommentInput";
 
-const CommentsList = ({ user }) => {
+const CommentsList = ({ currUser, loggedIn }) => {
     const [comments, setComments] = useState();
     const [isLoading, setIsLoading] = useState(false);
+    const [commentDeleted, setCommentDeleted] = useState(false);
+    const [commentPosted, setCommentPosted] = useState(false);
     const { article_id } = useParams();
 
     useEffect(() => {
@@ -22,10 +25,11 @@ const CommentsList = ({ user }) => {
 
     return (
         <div className="Comments__List">
-            <CommentInput articleId={article_id} user={user} setComments={setComments}/>
+            <CommentInput articleId={article_id} currUser={currUser} setComments={setComments} setCommentDeleted={setCommentDeleted} commentPosted={commentPosted} setCommentPosted={setCommentPosted}/>
+            {commentDeleted && <p><TiTick/> Comment deleted! <TiTick/></p>}
             {comments && comments.map((comment) => {
                 return (
-                        <CommentCard key={comment.comment_id} comment={comment}/>
+                        <CommentCard key={comment.comment_id} comment={comment} currUser={currUser} loggedIn={loggedIn} setComments={setComments} setCommentDeleted={setCommentDeleted} setCommentPosted={setCommentPosted}/>
                 )
             })}
         </div>

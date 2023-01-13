@@ -42,6 +42,10 @@ export const postCommentByArticleId = (articleId, username, comment) => {
   .then((res) => res.data);
 };
 
+export const deleteCommentByCommentId = (commentId) => {
+  return ncNewsAPI.delete(`/comments/${commentId}`).then((res) => res.data);
+}
+
 export const getTopics = () => {
   return ncNewsAPI.get("/topics").then((res) => res.data);
 }
