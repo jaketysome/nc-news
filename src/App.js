@@ -3,6 +3,7 @@ import { useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import Header from "./components/Header";
 import Nav from "./components/Nav";
+import Error from "./components/Error";
 import ArticlesList from "./components/ArticlesList";
 import SingleArticle from "./components/SingleArticle";
 
@@ -14,6 +15,7 @@ function App() {
     });
   const [loggedIn, setLoggedIn] = useState(false);
   const [isHome, setIsHome] = useState(true);
+  const [error, setError] = useState(null);
   const [currTopic, setCurrTopic] = useState(null);
   const [sortBy, setSortBy] = useState("created_at");
   const [order, setOrder] = useState("desc");
@@ -23,8 +25,10 @@ function App() {
       <Header currUser={currUser} loggedIn={loggedIn} setLoggedIn={setLoggedIn}/>
       <Nav isHome={isHome} setIsHome={setIsHome} currTopic={currTopic} setCurrTopic={setCurrTopic} sortBy={sortBy} setSortBy={setSortBy} order={order} setOrder={setOrder}/>
       <Routes>
-        <Route path={currTopic !== null ? `/articles/${currTopic}` : "/"} element={<ArticlesList  setIsHome={setIsHome} currTopic={currTopic} setCurrTopic={setCurrTopic} sortBy={sortBy} order={order}/>}></Route>
-        <Route path="/articles/:article_id" element={<SingleArticle currUser={currUser} loggedIn={loggedIn}/>}></Route>
+        <Route path="/articles" element={<ArticlesList setIsHome={setIsHome} error={error} setError={setError} sortBy={sortBy} order={order}/>}></Route>
+        <Route path={currTopic !== null ? `/topics/${currTopic}` : "/"} element={<ArticlesList  setIsHome={setIsHome} error={error} setError={setError} currTopic={currTopic} setCurrTopic={setCurrTopic} sortBy={sortBy} order={order}/>}></Route>
+        <Route path="/articles/:article_id" element={<SingleArticle setIsHome={setIsHome} currUser={currUser} loggedIn={loggedIn} error={error} setError={setError}/>}></Route>
+        <Route path="/*" element={<Error error={error} setIsHome={setIsHome}/>}></Route>
       </Routes>
     </div>
   );

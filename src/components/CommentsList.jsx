@@ -25,7 +25,7 @@ const CommentsList = ({ currUser, loggedIn }) => {
 
     return (
         <div className="Comments__List">
-            <CommentInput articleId={article_id} currUser={currUser} setComments={setComments} setCommentDeleted={setCommentDeleted} commentPosted={commentPosted} setCommentPosted={setCommentPosted}/>
+            <CommentInput loggedIn={loggedIn} articleId={article_id} currUser={currUser} setComments={setComments} setCommentDeleted={setCommentDeleted} commentPosted={commentPosted} setCommentPosted={setCommentPosted}/>
             {commentDeleted && <p><TiTick/> Comment deleted! <TiTick/></p>}
             {comments && comments.map((comment) => {
                 return (
