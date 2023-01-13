@@ -4,10 +4,11 @@ import { TiTick } from "react-icons/ti";
 import { RxCrossCircled } from "react-icons/rx";
 import * as api from "../utils/api";
 
-const CommentInput = ({ articleId, currUser, setComments, setCommentDeleted, commentPosted, setCommentPosted }) => {
+const CommentInput = ({ loggedIn, articleId, currUser, setComments, setCommentDeleted, commentPosted, setCommentPosted }) => {
     const [newComment, setNewComment] = useState("");
     const [validComment, setValidComment] = useState(false);
     const [showErrorMessage, setShowErrorMessage] = useState(false);
+    const [showLoginMessage, setShowLoginMessage] = useState(false);
     const [postingComment, setPostingComment] = useState(false);
     const { username } = currUser;
 
@@ -23,7 +24,7 @@ const CommentInput = ({ articleId, currUser, setComments, setCommentDeleted, com
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        if (validComment) {
+        if (validComment && loggedIn) {
             setPostingComment(true);
             api.postCommentByArticleId(articleId, username, newComment).then((data) => {
                 setPostingComment(false);
@@ -34,7 +35,7 @@ const CommentInput = ({ articleId, currUser, setComments, setCommentDeleted, com
                 setNewComment("");
                 });
         } else {
-            setShowErrorMessage(true);
+            !loggedIn ? setShowLoginMessage(true) : setShowErrorMessage(true);
         }
     };
 
@@ -44,6 +45,7 @@ const CommentInput = ({ articleId, currUser, setComments, setCommentDeleted, com
         <form className="Comment__Form" onSubmit={handleSubmit}>
             <label htmlFor="comment-input"></label>
             {!validComment && showErrorMessage && <p className="error-message"><RxCrossCircled/> Please enter a valid comment! <RxCrossCircled/><br></br>A comment should contain at least one letter, number or symbol.</p>}
+            {!loggedIn && showLoginMessage && <p className="error-message"><RxCrossCircled/> You must be logged in to post a comment! <RxCrossCircled/></p>}
             {commentPosted && <p><TiTick/> Comment posted!! <TiTick/></p>}
             <textarea className="Comment__Input" id="comment-input" placeholder="Enter comment..." value={newComment} 
                 onBlur={(e) => {isValidComment(e.target.value)}} 
