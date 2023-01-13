@@ -42,7 +42,7 @@ const CommentCard = ({ comment, currUser, setComments, setCommentDeleted, logged
             </div>
             <p className="Comment__Body">{body}</p>
             <p><BiLike/> {votes}</p>
-            {commentAuthor?.username === currUser.username && loggedIn ? <button onClick={() => {deleteComment(comment_id)}}>Delete comment</button> : null}<br></br>
+            {commentAuthor?.username === currUser.username && loggedIn && !isDeleting ? <button onClick={() => {deleteComment(comment_id)}}>Delete comment</button> : null}<br></br>
             {isDeleting && <ClipLoader color="#36D7B7"/>}
             {deleteError && <p className="error-message">Oops! Comment not deleted! <br></br>Please try again...</p>}
         </div>
