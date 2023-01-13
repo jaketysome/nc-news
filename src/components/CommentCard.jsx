@@ -3,8 +3,9 @@ import { formatDate } from "../utils/formatDate";
 import { BiLike } from "react-icons/bi";
 import * as api from "../utils/api";
 
-const CommentCard = ({ comment, currUser, setComments, setCommentDeleted, setDeleteError }) => {
+const CommentCard = ({ comment, currUser, setComments, setCommentDeleted }) => {
     const [commentAuthor, setCommentAuthor] = useState();
+    const [deleteError, setDeleteError] = useState(false);
     const { author, created_at, votes, body, comment_id } = comment;
 
     useEffect(() => {
@@ -37,6 +38,7 @@ const CommentCard = ({ comment, currUser, setComments, setCommentDeleted, setDel
             <p className="Comment__Body">{body}</p>
             <p><BiLike/> {votes}</p>
             {commentAuthor?.username === currUser.username ? <button onClick={() => {deleteComment(comment_id)}}>Delete comment</button> : null}
+            {deleteError && <p className="error-message">Oops! Comment not deleted! <br></br>Please try again...</p>}
         </div>
     )
 }
