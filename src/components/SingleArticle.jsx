@@ -5,8 +5,9 @@ import { BiCommentDetail, BiLike, BiDislike, BiHide } from "react-icons/bi";
 import { formatDate } from "../utils/formatDate";
 import * as api from "../utils/api"
 import CommentsList from "./CommentsList";
+import Error from "./Error";
 
-const SingleArticle = ({ currUser, loggedIn }) => {
+const SingleArticle = ({ setIsHome, currUser, loggedIn, error, setError }) => {
     const [singleArticle, setSingleArticle] = useState();
     const [showComments, setShowComments] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
@@ -18,6 +19,10 @@ const SingleArticle = ({ currUser, loggedIn }) => {
         api.getSingleArticleById(article_id).then((data) => {
             setSingleArticle(data.article);
             setIsLoading(false);
+        }).catch((err) => {
+            console.log(err)
+            setIsLoading(false);
+            setError(err.response);
         })
     }, [article_id])
 
@@ -35,6 +40,8 @@ const SingleArticle = ({ currUser, loggedIn }) => {
     }
 
     if (isLoading) return <ClipLoader color="#36D7B7"/>
+
+    if (error !== null) return <Error error={error} setIsHome={setIsHome}/>
 
     if (singleArticle) {
         return (
