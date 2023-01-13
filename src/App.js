@@ -23,7 +23,7 @@ function App() {
       <Nav currTopic={currTopic} setCurrTopic={setCurrTopic} sortBy={sortBy} setSortBy={setSortBy} order={order} setOrder={setOrder}/>
       <Routes>
         <Route path={currTopic !== null ? `/articles/${currTopic}` : "/"} element={<ArticlesList currTopic={currTopic} setCurrTopic={setCurrTopic} sortBy={sortBy} order={order}/>}></Route>
-        <Route path="/articles/:article_id" element={<SingleArticle currUser={currUser} />}></Route>
+        <Route path="/articles/:article_id" element={<SingleArticle currUser={currUser} loggedIn={loggedIn}/>}></Route>
       </Routes>
     </div>
   );

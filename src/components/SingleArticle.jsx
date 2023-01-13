@@ -6,7 +6,7 @@ import { formatDate } from "../utils/formatDate";
 import * as api from "../utils/api"
 import CommentsList from "./CommentsList";
 
-const SingleArticle = ({ currUser }) => {
+const SingleArticle = ({ currUser, loggedIn }) => {
     const [singleArticle, setSingleArticle] = useState();
     const [showComments, setShowComments] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
@@ -57,7 +57,7 @@ const SingleArticle = ({ currUser }) => {
                         <button onClick={(e) => setShowComments(false)}><BiHide/> Hide Comments</button>
                     </Link>}
                     <br></br>
-                    {showComments && <CommentsList articleId={article_id} currUser={currUser}/>}
+                    {showComments && <CommentsList articleId={article_id} currUser={currUser} loggedIn={loggedIn}/>}
                 </div>
             </div>
         );

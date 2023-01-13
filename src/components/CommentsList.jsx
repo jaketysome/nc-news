@@ -6,7 +6,7 @@ import * as api from "../utils/api";
 import CommentCard from "./CommentCard";
 import CommentInput from "./CommentInput";
 
-const CommentsList = ({ currUser }) => {
+const CommentsList = ({ currUser, loggedIn }) => {
     const [comments, setComments] = useState();
     const [isLoading, setIsLoading] = useState(false);
     const [commentDeleted, setCommentDeleted] = useState(false);
@@ -28,7 +28,7 @@ const CommentsList = ({ currUser }) => {
             {commentDeleted && <p><TiTick/> Comment deleted! <TiTick/></p>}
             {comments && comments.map((comment) => {
                 return (
-                        <CommentCard key={comment.comment_id} comment={comment} currUser={currUser} setComments={setComments} setCommentDeleted={setCommentDeleted}/>
+                        <CommentCard key={comment.comment_id} comment={comment} currUser={currUser} loggedIn={loggedIn} setComments={setComments} setCommentDeleted={setCommentDeleted}/>
                 )
             })}
         </div>
