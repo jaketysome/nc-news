@@ -16,7 +16,7 @@ const ArticlesList = ({ currTopic, sortBy, order }) => {
         })
     }, [currTopic, sortBy, order]);
 
-    if (isLoading) return <ClipLoader className="Loading-spinner"color="#36D7B7"/>
+    if (isLoading) return <ClipLoader className="Loading-spinner" color="#36D7B7"/>
 
     return (
         <div className="Articles">
