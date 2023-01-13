@@ -4,7 +4,7 @@ import { BiCommentDetail, BiLike } from "react-icons/bi";
 import { useState, useEffect } from "react";
 import * as api from "../utils/api";
 
-const ArticleCard = ({ article }) => {
+const ArticleCard = ({ setIsHome, article }) => {
     const [user, setUser] = useState();
     const {article_id, title, topic, author, created_at, comment_count, votes} = article;
 
@@ -21,7 +21,7 @@ const ArticleCard = ({ article }) => {
 
     return (
         <div className="Articles__Card">
-            <Link to={`/articles/${article_id}`} style={linkStyle}>
+            <Link to={`/articles/${article_id}`} onClick={() => {setIsHome(false)}} style={linkStyle}>
                 <div className="Card__Banner" >
                     {user && <img className="User__Avatar" src={user.avatar_url} alt="User Avatar"></img>}
                     <div>{author}<br></br>{formatDate(created_at)}</div>
