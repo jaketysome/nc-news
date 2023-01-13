@@ -1,7 +1,7 @@
 const Error = (err) => {
     return (
         <div>
-            <p>{err.msg}</p>
+            {err.msg ? err.msg : <p className="white-text">404 - Nothing to see here!</p>}
         </div>
     )
 }

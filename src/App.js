@@ -3,6 +3,7 @@ import { useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import Header from "./components/Header";
 import Nav from "./components/Nav";
+import Error from "./components/Error";
 import ArticlesList from "./components/ArticlesList";
 import SingleArticle from "./components/SingleArticle";
 
@@ -25,6 +26,7 @@ function App() {
       <Routes>
         <Route path={currTopic !== null ? `/articles/${currTopic}` : "/"} element={<ArticlesList  setIsHome={setIsHome} currTopic={currTopic} setCurrTopic={setCurrTopic} sortBy={sortBy} order={order}/>}></Route>
         <Route path="/articles/:article_id" element={<SingleArticle currUser={currUser} loggedIn={loggedIn}/>}></Route>
+        <Route path="/*" element={<Error />}></Route>
       </Routes>
     </div>
   );
