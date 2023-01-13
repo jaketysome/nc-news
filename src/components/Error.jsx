@@ -1,7 +1,6 @@
 import { useEffect } from "react";
 
 const Error = ({ error, setIsHome }) => {
-    const {data, status} = error;
 
     useEffect(() => {
         setIsHome(false);
@@ -9,7 +8,7 @@ const Error = ({ error, setIsHome }) => {
 
     return (
         <div>
-            {error !== null ? <p className="white-text">{`${status} - ${data.msg}`}</p> : <p className="white-text">404 - Nothing to see here!</p>}
+            {error !== null ? <p className="Error">{`${error.status} - ${error.data.msg}`}</p> : <p className="Error">404 - Nothing to see here!</p>}
         </div>
     )
 }
