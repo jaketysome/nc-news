@@ -4,12 +4,11 @@ import { TiTick } from "react-icons/ti";
 import { RxCrossCircled } from "react-icons/rx";
 import * as api from "../utils/api";
 
-const CommentInput = ({ articleId, currUser, setComments, setCommentDeleted }) => {
+const CommentInput = ({ articleId, currUser, setComments, setCommentDeleted, commentPosted, setCommentPosted }) => {
     const [newComment, setNewComment] = useState("");
     const [validComment, setValidComment] = useState(false);
     const [showErrorMessage, setShowErrorMessage] = useState(false);
     const [postingComment, setPostingComment] = useState(false);
-    const [commentPosted, setCommentPosted] = useState(false);
     const { username } = currUser;
 
     const isValidComment = (targetValue) => {

@@ -4,7 +4,7 @@ import { ClipLoader } from "react-spinners";
 import { BiLike } from "react-icons/bi";
 import * as api from "../utils/api";
 
-const CommentCard = ({ comment, currUser, setComments, setCommentDeleted, loggedIn }) => {
+const CommentCard = ({ comment, currUser, setComments, setCommentDeleted, setCommentPosted, loggedIn }) => {
     const [commentAuthor, setCommentAuthor] = useState();
     const [deleteError, setDeleteError] = useState(false);
     const [isDeleting, setIsDeleting] = useState(false);
@@ -19,6 +19,7 @@ const CommentCard = ({ comment, currUser, setComments, setCommentDeleted, logged
     const deleteComment = (commentId) => {
         setIsDeleting(true);
         api.deleteCommentByCommentId(commentId).then((data) => {
+            setCommentPosted(false);
             setCommentDeleted(true);
             setDeleteError(false);
             setIsDeleting(false);

@@ -10,6 +10,7 @@ const CommentsList = ({ currUser, loggedIn }) => {
     const [comments, setComments] = useState();
     const [isLoading, setIsLoading] = useState(false);
     const [commentDeleted, setCommentDeleted] = useState(false);
+    const [commentPosted, setCommentPosted] = useState(false);
     const { article_id } = useParams();
 
     useEffect(() => {
@@ -24,11 +25,11 @@ const CommentsList = ({ currUser, loggedIn }) => {
 
     return (
         <div className="Comments__List">
-            <CommentInput articleId={article_id} currUser={currUser} setComments={setComments} setCommentDeleted={setCommentDeleted}/>
+            <CommentInput articleId={article_id} currUser={currUser} setComments={setComments} setCommentDeleted={setCommentDeleted} commentPosted={commentPosted} setCommentPosted={setCommentPosted}/>
             {commentDeleted && <p><TiTick/> Comment deleted! <TiTick/></p>}
             {comments && comments.map((comment) => {
                 return (
-                        <CommentCard key={comment.comment_id} comment={comment} currUser={currUser} loggedIn={loggedIn} setComments={setComments} setCommentDeleted={setCommentDeleted}/>
+                        <CommentCard key={comment.comment_id} comment={comment} currUser={currUser} loggedIn={loggedIn} setComments={setComments} setCommentDeleted={setCommentDeleted} setCommentPosted={setCommentPosted}/>
                 )
             })}
         </div>
