@@ -59,12 +59,23 @@ select {
   background-color: white;
 }
 
+.User__Avatar__loggedOut {
+  margin: 10px;
+  width: 30px;
+  height: 30px;
+  text-align: left;
+  border-radius: 5px;
+  background-color: white;
+  color:#114774;
+}
+
 .User__info {
   margin-left: auto;
   margin-right: 19%;
   padding-right: auto;
   display: flex;
   font-variant: normal;
+  align-items: center;
 }
 
 .white-text {
