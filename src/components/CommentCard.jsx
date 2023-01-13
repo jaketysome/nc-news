@@ -5,13 +5,19 @@ import * as api from "../utils/api";
 
 const CommentCard = ({ comment, currUser }) => {
     const [commentAuthor, setCommentAuthor] = useState();
-    const { author, created_at, votes, body } = comment;
+    const { author, created_at, votes, body, comment_id } = comment;
 
     useEffect(() => {
         api.getUserByUsername(author).then((data) => {
             setCommentAuthor(data.user);
         })
     }, [author])
+
+    const deleteComment = (commentId) => {
+        api.deleteCommentByCommentId(commentId).then((data) => {
+            console.log(data)
+        })
+    }
 
     return (
         <div className="Comment__Card">
@@ -21,7 +27,7 @@ const CommentCard = ({ comment, currUser }) => {
             </div>
             <p className="Comment__Body">{body}</p>
             <p><BiLike/> {votes}</p>
-            {commentAuthor?.username === currUser.username ? <button>Delete comment</button> : null}
+            {commentAuthor?.username === currUser.username ? <button onClick={() => {deleteComment(comment_id)}}>Delete comment</button> : null}
         </div>
     )
 }
