@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import TopicsList from "./TopicsList";
 import * as api from "../utils/api";
 
-const Nav = ({ currTopic, setCurrTopic, sortBy, setSortBy, order, setOrder }) => {
+const Nav = ({ isHome, setIsHome, currTopic, setCurrTopic, sortBy, setSortBy, order, setOrder }) => {
     const [topicsList, setTopicsList] = useState();
     const [revealTopics, setRevealTopics] = useState(false);
 
@@ -16,11 +16,15 @@ const Nav = ({ currTopic, setCurrTopic, sortBy, setSortBy, order, setOrder }) =>
     return (
         <div>
         <nav className="Nav">
-            <Link to="/" className={currTopic === null ? "Nav__link__selected" : "Nav__link"} onClick={() => {
+            <Link to="/" className={isHome ? "Nav__link__selected" : "Nav__link"} onClick={() => {
+                setIsHome(true);
                 setCurrTopic(null) 
                 setRevealTopics(false)
                 }}>HOME</Link>
-            <Link className={revealTopics ? "Nav__link__selected" : "Nav__link"} onClick={() => {revealTopics ? setRevealTopics(false) : setRevealTopics(true)}}>TOPICS</Link>
+            <Link className={revealTopics ? "Nav__link__selected" : "Nav__link"} onClick={() => {
+                setIsHome(false);
+                revealTopics ? setRevealTopics(false) : setRevealTopics(true);
+                }}>TOPICS</Link>
             <Link className="Nav__link" >USERS</Link>
             <div className="Sort-by">
                 <label htmlFor="sort-by">Sort by: </label> 

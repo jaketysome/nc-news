@@ -4,7 +4,7 @@ import ArticleCard from "./ArticleCard";
 import TopicHeader from "./TopicHeader";
 import * as api from "../utils/api";
 
-const ArticlesList = ({ currTopic, sortBy, order }) => {
+const ArticlesList = ({  setIsHome, currTopic, sortBy, order }) => {
     const [articles, setArticles] = useState();
     const [isLoading, setIsLoading] = useState(true);
 
@@ -16,14 +16,14 @@ const ArticlesList = ({ currTopic, sortBy, order }) => {
         })
     }, [currTopic, sortBy, order]);
 
-    if (isLoading) return <ClipLoader className="Loading-spinner"color="#36D7B7"/>
+    if (isLoading) return <ClipLoader className="Loading-spinner" color="#36D7B7"/>
 
     return (
         <div className="Articles">
             {currTopic !== null && <TopicHeader currTopic={currTopic}/>}
             {articles && articles.map((article) => {
                 return (
-                    <ArticleCard article={article} key={article.article_id}/>
+                    <ArticleCard setIsHome={setIsHome} article={article} key={article.article_id}/>
                 )
             })}
         </div>
