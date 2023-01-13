@@ -25,7 +25,8 @@ function App() {
       <Header currUser={currUser} loggedIn={loggedIn} setLoggedIn={setLoggedIn}/>
       <Nav isHome={isHome} setIsHome={setIsHome} currTopic={currTopic} setCurrTopic={setCurrTopic} sortBy={sortBy} setSortBy={setSortBy} order={order} setOrder={setOrder}/>
       <Routes>
-        <Route path={currTopic !== null ? `/articles/${currTopic}` : "/"} element={<ArticlesList  setIsHome={setIsHome} error={error} setError={setError} currTopic={currTopic} setCurrTopic={setCurrTopic} sortBy={sortBy} order={order}/>}></Route>
+        <Route path="/articles" element={<ArticlesList  setIsHome={setIsHome} error={error} setError={setError} sortBy={sortBy} order={order}/>}></Route>
+        <Route path={currTopic !== null ? `/topics/${currTopic}` : "/"} element={<ArticlesList  setIsHome={setIsHome} error={error} setError={setError} currTopic={currTopic} setCurrTopic={setCurrTopic} sortBy={sortBy} order={order}/>}></Route>
         <Route path="/articles/:article_id" element={<SingleArticle setIsHome={setIsHome} currUser={currUser} loggedIn={loggedIn} error={error} setError={setError}/>}></Route>
         <Route path="/*" element={<Error error={error} setIsHome={setIsHome}/>}></Route>
       </Routes>
