@@ -3,7 +3,7 @@ import { formatDate } from "../utils/formatDate";
 import { BiLike } from "react-icons/bi";
 import * as api from "../utils/api";
 
-const CommentCard = ({ comment, currUser, setComments, setCommentDeleted }) => {
+const CommentCard = ({ comment, currUser, setComments, setCommentDeleted, setDeleteError }) => {
     const [commentAuthor, setCommentAuthor] = useState();
     const { author, created_at, votes, body, comment_id } = comment;
 
@@ -14,18 +14,17 @@ const CommentCard = ({ comment, currUser, setComments, setCommentDeleted }) => {
     }, [author])
 
     const deleteComment = (commentId) => {
-        setComments((currComments) => {
-            return currComments.filter((comment) => {
-                return comment.comment_id !== commentId;
-            })
-        })
         api.deleteCommentByCommentId(commentId).then((data) => {
             setCommentDeleted(true);
+            setDeleteError(false);
+            setComments((currComments) => {
+                return currComments.filter((comment) => {
+                    return comment.comment_id !== commentId;
+                })
+            })
         }).catch((err) => {
             setCommentDeleted(false);
-            setComments((currComments) => {
-                return currComments;
-            })
+            setDeleteError(true);
         })
     }
 

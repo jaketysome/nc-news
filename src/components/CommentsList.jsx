@@ -10,6 +10,7 @@ const CommentsList = ({ currUser }) => {
     const [comments, setComments] = useState();
     const [isLoading, setIsLoading] = useState(false);
     const [commentDeleted, setCommentDeleted] = useState(false);
+    const [deleteError, setDeleteError] = useState(false);
     const { article_id } = useParams();
 
     useEffect(() => {
@@ -26,9 +27,10 @@ const CommentsList = ({ currUser }) => {
         <div className="Comments__List">
             <CommentInput articleId={article_id} currUser={currUser} setComments={setComments} setCommentDeleted={setCommentDeleted}/>
             {commentDeleted && <p><TiTick/> Comment deleted! <TiTick/></p>}
+            {deleteError && <p className="error-message">Oops! Comment not deleted! <br></br>Please try again...</p>}
             {comments && comments.map((comment) => {
                 return (
-                        <CommentCard key={comment.comment_id} comment={comment} currUser={currUser} setComments={setComments} setCommentDeleted={setCommentDeleted}/>
+                        <CommentCard key={comment.comment_id} comment={comment} currUser={currUser} setComments={setComments} setCommentDeleted={setCommentDeleted} setDeleteError={setDeleteError}/>
                 )
             })}
         </div>
