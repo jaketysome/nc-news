@@ -15,6 +15,7 @@ function App() {
     });
   const [loggedIn, setLoggedIn] = useState(false);
   const [isHome, setIsHome] = useState(true);
+  const [error, setError] = useState(null);
   const [currTopic, setCurrTopic] = useState(null);
   const [sortBy, setSortBy] = useState("created_at");
   const [order, setOrder] = useState("desc");
@@ -26,7 +27,7 @@ function App() {
       <Routes>
         <Route path={currTopic !== null ? `/articles/${currTopic}` : "/"} element={<ArticlesList  setIsHome={setIsHome} currTopic={currTopic} setCurrTopic={setCurrTopic} sortBy={sortBy} order={order}/>}></Route>
         <Route path="/articles/:article_id" element={<SingleArticle currUser={currUser} loggedIn={loggedIn}/>}></Route>
-        <Route path="/*" element={<Error />}></Route>
+        <Route path="/*" element={<Error error={error} setIsHome={setIsHome}/>}></Route>
       </Routes>
     </div>
   );
