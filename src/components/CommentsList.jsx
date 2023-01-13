@@ -10,6 +10,8 @@ const CommentsList = ({ currUser }) => {
     const [isLoading, setIsLoading] = useState(false);
     const { article_id } = useParams();
 
+    console.log(comments, "<<<<<")
+
     useEffect(() => {
         setIsLoading(true);
         api.getCommentsByArticleId(article_id).then((data) => {
@@ -25,7 +27,7 @@ const CommentsList = ({ currUser }) => {
             <CommentInput articleId={article_id} currUser={currUser} setComments={setComments}/>
             {comments && comments.map((comment) => {
                 return (
-                        <CommentCard key={comment.comment_id} comment={comment} currUser={currUser}/>
+                        <CommentCard key={comment.comment_id} comment={comment} currUser={currUser} setComments={setComments}/>
                 )
             })}
         </div>
