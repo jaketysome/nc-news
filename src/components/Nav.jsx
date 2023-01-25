@@ -25,7 +25,6 @@ const Nav = ({ isHome, setIsHome, currTopic, setCurrTopic, sortBy, setSortBy, or
                 setIsHome(false);
                 revealTopics ? setRevealTopics(false) : setRevealTopics(true);
                 }}>TOPICS</Link>
-            <Link className="Nav__link" >USERS</Link>
             <div className="Sort-by">
                 <label htmlFor="sort-by">Sort by: </label> 
                 <select 
