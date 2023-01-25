@@ -12,7 +12,11 @@ https://nc-news-portfolio-site.netlify.app
 Link to the hosted API:
 https://nc-news-api-service.onrender.com/api/articles
 
-In order to clone and run this application, you will need Node.js (v16.17.0) and Git installed on your computer.<br />
+**Please note, in order to post and delete comments you must login using the button to the top right of the website.**<br />
+
+**A default user is provided for demonstration purposes.**
+
+In order to clone and run this application, you will need **Node.js (v16.17.0)** and **Git** installed on your computer.<br />
 In your command line:
 
 ```
